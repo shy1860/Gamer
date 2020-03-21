@@ -1,0 +1,7 @@
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+.mat-form-field-label{
+    color:green !important;
+  }
+  .mat-form-field-underline{
+    background-color:green !important;
+  }

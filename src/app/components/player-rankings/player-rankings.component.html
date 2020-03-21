@@ -1,0 +1,109 @@
+<!-- Title group  -->
+<!-- <div class="title-group">
+
+    <h1 class="mat-h1">Players List</h1>
+    <mat-divider fxFlex="1 0"></mat-divider>
+  </div> -->
+
+  <!-- <p *ngIf="PlayerData.length <= 0" class="no-data">There is no player added yet!</p>
+  *ngIf="playerData.length > 0-->
+  <!-- <mat-toolbar>
+  <mat-card>
+  <div id="button">
+  <button mat-flat-button color="primary" [routerLink]="['/log-in']" >Login</button>
+  </div>
+</mat-card>
+</mat-toolbar> -->
+<br>
+<button style="float:right; font-size:120%; margin-right:15px"  routerLink="/log-in">Login</button>
+<br>
+<br>
+<mat-toolbar>
+
+ <button mat-raised-button mat-align="center" style="width : 50%; font-size:100%;" routerLink="/player-rankings">Player Rankings</button>
+ <button mat-stroked-button mat-align="center" style="width : 50%; font-size:100%" routerLink="/log-in">Admin</button>
+
+
+</mat-toolbar>
+
+<div class="search-div">
+  <mat-form-field class="search-form-field" floatLabel="never">
+    <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="applyFilter()">
+    <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchKey"  (click)="onSearchClear()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+</div>
+
+<!-- <div class="title-group">
+  <mat-toolbar-row>
+      <form [formGroup]="searchForm" > 
+      <form>
+        <span id='searchBar'>
+          <mat-icon class="search-icon" aria-hidden="false" aria-label="Search">search</mat-icon>
+          <input matInput placeholder="search">
+        </span>
+      </form>
+      <span class="example-spacer"></span>
+    </mat-toolbar-row>
+</div> -->
+
+  <div class="table-pos">
+    <!-- <div class="mat-elevation-z8"> -->
+      <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="_id">
+          <th mat-header-cell *matHeaderCellDef> Player ID </th>
+          <td mat-cell *matCellDef="let element"> {{element._id}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="player_name">
+          <th mat-header-cell *matHeaderCellDef> Player Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.player_name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="rank">
+          <th mat-header-cell *matHeaderCellDef> Rank </th>
+          <td mat-cell *matCellDef="let element"> {{element.rank}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="score">
+          <th mat-header-cell *matHeaderCellDef> Score </th>
+          <td mat-cell *matCellDef="let element"> {{element.score}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="time">
+            <th mat-header-cell *matHeaderCellDef> Time </th>
+            <td mat-cell *matCellDef="let element"> {{element.time}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="gamesPlayed">
+            <th mat-header-cell *matHeaderCellDef> Games Played </th>
+            <td mat-cell *matCellDef="let element"> {{element.gamesPlayed}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef> Status </th>
+            <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+
+
+          </ng-container>
+
+
+        <ng-container matColumnDef="action"  >
+          <th mat-header-cell *matHeaderCellDef> Action </th>
+          <td mat-cell *matCellDef="let element; let i = index;">
+            <button *ngIf= "element.status === 'Available'" ng mat-raised-button color="primary" class="push-right"
+            [routerLink]="['/join-game/', element._id]">Join</button>
+
+
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    </div>
+    <router-outlet></router-outlet>
+  <!-- </div> -->

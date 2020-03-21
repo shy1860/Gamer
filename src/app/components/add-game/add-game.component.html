@@ -1,0 +1,92 @@
+
+<div class="title-group">
+    <h1 class="mat-h1">Add Game</h1>
+    <mat-divider fxFlex="1 0"></mat-divider>
+  </div>
+
+  
+  <div class="inner-wrapper">
+    <form [formGroup]="gameForm" (ngSubmit)="submitGameForm()" #resetGameForm="ngForm" novalidate>
+  
+        <mat-card>
+            <div class="controlers-wrapper">
+     
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Game title" formControlName="game_title">
+                <mat-error *ngIf="handleError('game_title', 'required')">
+                  You must provide a<strong>game name</strong>
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Platform" formControlName="platform">
+                <mat-error *ngIf="handleError('platform', 'required')">
+                  You must provide a<strong>game platform</strong>
+                </mat-error>
+              </mat-form-field>
+             
+      
+         
+              <mat-form-field>
+                
+                <input matInput placeholder="Genre" formControlName="genre">
+                
+                <mat-error *ngIf="handleError('genre', 'required')">
+                  Genre is required
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </mat-card>
+  
+       
+        <mat-card>
+          <div class="controlers-wrapper">
+          
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Rating" formControlName="rating">
+                <mat-error *ngIf="handleError('rating', 'required')">
+                  You must provide a<strong>game rating</strong>
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Publisher" formControlName="publisher">
+                <mat-error *ngIf="handleError('publisher', 'required')">
+                  You must provide a<strong>game publisher</strong>
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Release" formControlName="release">
+                <mat-error *ngIf="handleError('release', 'required')">
+                  You must provide a<strong>game release</strong>
+                </mat-error>
+              </mat-form-field>
+              
+                    <mat-form-field>
+                        <mat-label>Status</mat-label>
+                        <mat-select [(value)]="selectedStatus" formControlName="status">
+                          <mat-option [value]="statusArray" *ngFor="let statusArray of StatusArray">{{statusArray}}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="handleError('status', 'required')">
+                          rank is required
+                        </mat-error>
+                      </mat-form-field>
+                    
+              
+                </div>
+              </mat-card>
+  
+              <mat-card>
+                  <div class="full-wrapper button-wrapper">
+                    <div class="button-wrapper">
+                      <button mat-flat-button color="warn">Add</button>
+                      <button mat-raised-button *ngIf="this.gameApi.isLoggedIn" color="primary" class="push-right"
+                      [routerLink]="['/games-list/']">Cancel</button>
+                    </div>
+                  </div>
+              </mat-card>
+      </form>
+    </div>
+    

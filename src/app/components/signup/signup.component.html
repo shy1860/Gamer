@@ -1,0 +1,45 @@
+<div class="title-group">
+    <h1 class="mat-h1">Please register </h1>
+    <mat-divider fxFlex="1 0"></mat-divider>
+</div>
+
+<div class="login-wrapper" >
+        
+          
+      
+          <div class="inner-wrapper">
+          <form class="example-form" [formGroup]="signupForm" (ngSubmit)="registerUser()">
+              <mat-card>
+              <div class="controlers-wrapper">
+                    
+      
+            
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Name" formControlName="name" >
+              </mat-form-field>
+      
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Email" formControlName="email">
+              </mat-form-field>
+      
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Password should be 5 to 8 characters" formControlName="password">
+              </mat-form-field>
+      
+              <mat-form-field class="example-full-width">
+                <mat-label>Choose a role...</mat-label>
+                <mat-select [(value)]="selected">
+                  <mat-option [value]="roles" *ngFor="let roles of roles">{{roles}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+      
+           
+      
+            <button mat-stroked-button color="accent" type="submit" class="btn-block">Register</button>
+      </div>
+      </mat-card>
+          </form>
+        </div>
+        
+      </div>
